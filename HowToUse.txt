@@ -1,0 +1,58 @@
+●程式碼只要加入以下
+/*from here*/
+javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                DecisionTree.createAndShowGUI(Root);
+            }
+});
+/*to here*/
+
+然後丟入Root即可 (自訂資料結構node)
+
+●資料結構
+├customer
+└node
+
+◎customer
+└1. 只用到一個變數 : List<String> property
+1. 儲存dataset所有的attribute，之後會透過index來找出指定的attribute。
+
+◎node
+├1. String type
+├2. int indexChoiceAttr
+├3. List<node> child
+├4. List<String> choice
+├5. node father
+└6. int level
+
+一個node會儲存判斷走到下一個的node需要的資訊。
+(A)功能描述
+1. 確認要用數值型還是類別型來判斷。
+2. 哪一個Attribute
+3. 所有的node
+4. 要拿來判斷的資訊
+5. 父結點
+6. 現在第幾層
+
+(B)變數操作
+1. 只有兩種字串，int or String
+    int代表數值型
+    String代表類別型
+
+2. 對照customer的property，找到對應的attribute，如果是-1代表走到leaf
+
+3. 是一個ArrayList，存放每一個子結點，需要和變數4有對應的順序
+
+4. 是一個ArrayList，存放Attribute value，Ex:Partial College, Graduate Degree，需要和變數3有對應的順序
+
+5. 存放父結點
+
+6. integer type，第幾層
+
+●result
+https://drive.google.com/file/d/0B6pzUmI6NQUkalNJOXh3Mmc5cU0/view?usp=sharing
+
+root忘記改，第一層開始都是AAA (BBB)
+AAA代表attribute
+BBB代表attribute value
+如果是education (Parital College)，代表被Education分類為Partial College會走到該結點
